@@ -3,7 +3,7 @@ def server_has_space(server, DC, line, column, S):
     if server.size+column > S:
         return False
     for j in range(column, column+server.size):
-        if DC[line][j] is not None:
+        if DC[line][j] == -1:
             return False
     return True
 
