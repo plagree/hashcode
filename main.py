@@ -3,6 +3,7 @@
 
 import sys
 from score import *
+from assignement import *
 
 class Server:
     def __init__(self, z, c, n):
@@ -38,6 +39,7 @@ if __name__ == "__main__":
                 z, c = data
                 servers[M_line] = Server(z,c,M_line)
                 M_line += 1
+    put_servers(DC, servers, nb_lines, S)
 
 
 def write_output(servers):
