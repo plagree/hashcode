@@ -5,6 +5,7 @@ import sys
 from groups import *
 from score import *
 from assignement import *
+from random import *
 
 class Server:
     def __init__(self, z, c, n):
@@ -59,6 +60,23 @@ def write_output(servers):
 
 print DC
 print [(s.size, s.capacity, s.index) for s in servers.itervalues()]
-print compute_score(servers.values(), nb_groups, nb_lines)
+
+previous = compute_score(servers.values(), nb_groups, nb_lines)
+def switch(a, b):
+    c = a.group
+    a.group = b.group
+    b.group = c
+
+for i in range(500):
+    a = randint(0, len(servers)-1)
+    b = randint(0, len(servers)-1)
+    switch(servers[a], servers[b])
+    new = compute_score(servers.values(), nb_groups, nb_lines)
+    if new > previous:
+        previous = new
+    else:
+        switch(servers[a], servers[b])
+    print compute_score(servers.values(), nb_groups, nb_lines)
+
 
 write_output(sorted(servers.values(), key=lambda m:m.index))
