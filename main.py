@@ -39,6 +39,18 @@ if __name__ == "__main__":
                 servers[M_line] = Server(z,c,M_line)
                 M_line += 1
 
+
+def write_output(servers):
+    f = open('output.in', 'w')
+    for server in servers:
+        if server.group is None or server.line is None or server.column is None:
+            f.write("x\n")
+        else:
+            f.write("%d %d %d" % (server.line, server.column, server.group))
+    f.close()
+
 print DC
 print [(s.size, s.capacity, s.index) for s in servers.itervalues()]
 print compute_score(servers.values(), nb_groups, nb_lines)
+
+write_output(sorted(servers.values(), key=lambda m:m.index))
