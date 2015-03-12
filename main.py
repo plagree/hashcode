@@ -2,6 +2,7 @@
 #-*-coding: utf-8 -*-
 
 import sys
+from groups import *
 from score import *
 from assignement import *
 
@@ -37,9 +38,10 @@ if __name__ == "__main__":
                     typeline = 2
             elif typeline == 2:
                 z, c = data
-                servers[M_line] = Server(z,c,M_line)
+                servers[M_line] = Server(z, c, M_line)
                 M_line += 1
     put_servers(DC, servers, nb_lines, S)
+    assign_groups(DC, servers, nb_groups)
 
 
 def write_output(servers):
