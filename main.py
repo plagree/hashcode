@@ -36,7 +36,7 @@ if __name__ == "__main__":
                     typeline = 2
             elif typeline == 2:
                 z, c = data
-                servers.append(Server(z,c,M_line))
+                servers.append(Server(z, c, M_line))
                 M_line += 1
 
 print DC
