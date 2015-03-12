@@ -27,7 +27,7 @@ if __name__ == "__main__":
             data = [int(x) for x in data]
             if typeline == 0:
                 nb_lines, S, U, nb_groups, M = data
-                DC = [[0 for i in range(S)] for j in range(nb_lines)]
+                DC = [[None for i in range(S)] for j in range(nb_lines)]
                 typeline = 1
             elif typeline == 1:
                 U_line += 1
