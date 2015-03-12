@@ -3,7 +3,7 @@ def server_has_space(server, DC, line, column, S):
     if server.size+column > S:
         return False
     for j in range(column, column+server.size):
-        if DC[line][j] == -1:
+        if DC[line][j] is not None:
             return False
     return True
 
@@ -18,7 +18,7 @@ def put_servers(DC, servers, nb_lines, S):
                 server.line = line
                 server.column = column
                 for j in range(column, column+server.size):
-                    DC[line][column] = server.index
+                    DC[line][j] = server.index
                 line += 1
                 line %= nb_lines
                 break

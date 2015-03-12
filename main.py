@@ -15,6 +15,10 @@ class Server:
         self.capacity = c
         self.index = n
 
+    def __repr__(self):
+        return "<Server: line: %d, column: %d, group: %d, size: %d, capacity: %d, index: %d>" % (
+            self.line, self.column, self.group, self.size, self.capacity, self.index)
+
 if __name__ == "__main__":
     filename = sys.argv[1]
     with open(filename, 'r') as f:
@@ -50,7 +54,7 @@ def write_output(servers):
         if server.group is None or server.line is None or server.column is None:
             f.write("x\n")
         else:
-            f.write("%d %d %d" % (server.line, server.column, server.group))
+            f.write("%d %d %d\n" % (server.line, server.column, server.group))
     f.close()
 
 print DC
