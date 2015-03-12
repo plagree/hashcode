@@ -1,5 +1,3 @@
-
-
 def compute_score(servers, nb_groups, nb_lines):
     score = None
     for g in range(nb_groups):

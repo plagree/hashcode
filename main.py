@@ -2,6 +2,7 @@
 #-*-coding: utf-8 -*-
 
 import sys
+from score import *
 
 class Server:
     def __init__(self, z, c, n):
@@ -24,8 +25,8 @@ if __name__ == "__main__":
             data = l.split(' ')
             data = [int(x) for x in data]
             if typeline == 0:
-                R, S, U, P, M = data
-                DC = [[0 for i in range(S)] for j in range(R)]
+                nb_lines, S, U, nb_groups, M = data
+                DC = [[0 for i in range(S)] for j in range(nb_lines)]
                 typeline = 1
             elif typeline == 1:
                 U_line += 1
@@ -40,3 +41,4 @@ if __name__ == "__main__":
 
 print DC
 print [(s.size, s.capacity, s.index) for s in servers]
+print compute_score(servers, nb_groups, nb_lines)
