@@ -1,14 +1,16 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 #-*-coding: utf-8 -*-
 
 import sys
 
 class Server:
-    def __init__(self, z, c):
+    def __init__(self, z, c, n):
         self.line = None
+        self.column = None
         self.group = None
         self.size = z
         self.capacity = c
+        self.index = n
 
 if __name__ == "__main__":
     filename = sys.argv[1]
@@ -23,7 +25,7 @@ if __name__ == "__main__":
             data = [int(x) for x in data]
             if typeline == 0:
                 R, S, U, P, M = data
-                DC = [[None for i in range(S)] for j in range(R)]
+                DC = [[0 for i in range(S)] for j in range(R)]
                 typeline = 1
             elif typeline == 1:
                 U_line += 1
@@ -32,13 +34,9 @@ if __name__ == "__main__":
                 if U_line == U:
                     typeline = 2
             elif typeline == 2:
-                M_line += 1
                 z, c = data
-                servers.append(Server(z,c))
+                servers.append(Server(z,c,M_line))
+                M_line += 1
 
-
-
-
-
-
-
+print DC
+print [(s.size, s.capacity, s.index) for s in servers]
