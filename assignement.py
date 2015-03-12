@@ -8,7 +8,7 @@ def server_has_space(server, DC, line, column, S):
     return True
 
 def put_servers(DC, servers, nb_lines, S):
-    sortedServers = sorted(servers.values(), key=lambda x: x.size, reverse=True)
+    sortedServers = sorted(servers.values(), key=lambda x: [x.size, x.capacity], reverse=True)
     line = 0
     column = 0
     for server in sortedServers:
