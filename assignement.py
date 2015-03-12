@@ -24,7 +24,7 @@ def put_servers(DC, servers, nb_lines, S):
                 break
             column += 1
             if column == S:
-                column =0
+                column = 0
                 line += 1
                 line %= nb_lines
                 if line == currLine:

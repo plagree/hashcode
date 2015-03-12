@@ -12,5 +12,5 @@ def garantied_capacity(servers, nb_lines, group_id):
     value = total_capacity
     for l in range(nb_lines):
         capacity = sum([s.capacity if s.group == group_id and s.line != l else 0 for s in servers])
-        value = min(value, total_capacity - capacity)
+        value = min(value, capacity)
     return value
