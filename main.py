@@ -19,7 +19,7 @@ if __name__ == "__main__":
         typeline = 0
         U_line = 0
         M_line = 0
-        servers = []
+        servers = {}
         for l in f:
             l = l.rstrip('\n')
             data = l.split(' ')
@@ -36,9 +36,9 @@ if __name__ == "__main__":
                     typeline = 2
             elif typeline == 2:
                 z, c = data
-                servers.append(Server(z,c,M_line))
+                servers[M_line] = Server(z,c,M_line)
                 M_line += 1
 
 print DC
-print [(s.size, s.capacity, s.index) for s in servers]
-print compute_score(servers, nb_groups, nb_lines)
+print [(s.size, s.capacity, s.index) for s in servers.itervalues()]
+print compute_score(servers.values(), nb_groups, nb_lines)
